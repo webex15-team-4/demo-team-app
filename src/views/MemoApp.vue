@@ -1,4 +1,34 @@
 <template>
+  <h1>Vueメモ</h1>
+  <div class="heiretu">
+    <div>ひき肉を300g買う</div>
+    <button id="kago">カゴに入れました</button>
+  </div>
+  <div class="heiretu">
+    <div>ホウレンソウを一束買う</div>
+    <button id="kago">カゴに入れました</button>
+  </div>
+  <div class="heiretu">
+    <div>ピーマンを2個買う</div>
+    <button id="kago">カゴに入れました</button>
+  </div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style>
+.heiretu {
+  display: flex;
+}
+
+#kago {
+  border-radius: solid;
+}
+</style>
+
+<!-- <template>
   <h1>Vue メモ</h1>
   <div class="memo-list">
     <ul class="memo-list__container">
@@ -106,4 +136,4 @@ export default {}
   background-color: #b2ae3b;
   border-radius: 5px;
 }
-</style>
+</style> -->
