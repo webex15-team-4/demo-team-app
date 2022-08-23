@@ -4,19 +4,16 @@
     <router-view />
   </main>
   <Footer />
-  <QuizApp />
 </template>
 
 <script>
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import QuizApp from "@/views/QuizApp.vue"
 
 export default {
   components: {
     Header,
     Footer,
-    QuizApp,
   },
 }
 </script>

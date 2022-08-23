@@ -1,33 +1,18 @@
 <template>
-  <!DOCTYPE html>
-  <html lang="ja">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <title>Document</title>
-    </head>
-    <body>
-      <div id="app">
-        <h2>Q. {{ quiz.text }}</h2>
-        <img
-          id="quiz-image"
-          v-bind:src="quizImagePath"
-          v-bind:alt="quiz.text"
-        />
-        <div class="container">
-          <button
-            v-for="(choice, i) in quiz.choices"
-            v-bind:key="i"
-            v-on:click="choiced(choice)"
-          >
-            {{ choice.text }}
-          </button>
-        </div>
-        <div>{{ feedback }}</div>
-      </div>
-    </body>
-  </html>
+  <div id="app">
+    <h2>Q. {{ quiz.text }}</h2>
+    <img id="quiz-image" v-bind:src="quizImagePath" v-bind:alt="quiz.text" />
+    <div class="container">
+      <button
+        v-for="(choice, i) in quiz.choices"
+        v-bind:key="i"
+        v-on:click="choiced(choice)"
+      >
+        {{ choice.text }}
+      </button>
+    </div>
+    <div>{{ feedback }}</div>
+  </div>
 </template>
 
 <script>
@@ -35,9 +20,10 @@ export default {
   data() {
     return {
       feedback: "",
+      imagepath: "Ganymede.jpg",
       quiz: {
         text: "この星の名前は何でしょう？",
-        image: "./assets/assets/Ganymede.jpg",
+        image: "Ganymede.jpg",
         choices: [
           {
             text: "ゴリアテ",
@@ -71,7 +57,7 @@ export default {
   },
   computed: {
     quizImagePath() {
-      return this.quiz.image
+      return require("@/assets/assets/" + this.quiz.image)
     },
   },
 }
