@@ -1,30 +1,54 @@
 <template>
   <h1>Vueメモ</h1>
-  <div class="heiretu">
-    <div>ひき肉を300g買う</div>
-    <button id="kago">カゴに入れました</button>
+  <div class="inputContainer">
+    <input type="text" v-model="inputMemo" />
+    <button v-on:click="tsuika">追加</button>
   </div>
-  <div class="heiretu">
-    <div>ホウレンソウを一束買う</div>
-    <button id="kago">カゴに入れました</button>
-  </div>
-  <div class="heiretu">
-    <div>ピーマンを2個買う</div>
-    <button id="kago">カゴに入れました</button>
-  </div>
+  <ul>
+    <li v-for="(item, index) in items" :key="index">
+      <label>
+        <input type="checkbox" />
+        <span>{{ inputMemo }}</span>
+      </label>
+    </li>
+  </ul>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      inputMemo: "",
+      items: [],
+    }
+  },
+
+  methods: {
+    tsuika() {
+      //dataの中にあるプロパティを使いたいときは必ずthis.をいれる
+      if (this.inputMemo !== "") {
+        this.items.push({ text: this.inputMemo })
+      }
+    },
+  },
+}
 </script>
 
 <style>
+.inputContainer {
+  border: 2px solid red;
+}
+
 .heiretu {
   display: flex;
 }
 
 #kago {
   border-radius: solid;
+}
+
+#v-model {
+  display: flex;
 }
 </style>
 
