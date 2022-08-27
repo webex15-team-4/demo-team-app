@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style scoped>
-.main-view {Y
+.main-view {
   padding: 0 2rem;
   width: 100%;
 }

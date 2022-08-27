@@ -1,17 +1,22 @@
 <template>
   <h1>Vue パレット</h1>
   <div class="app">
-    <div class="palette" style="background-color: rgba(0, 0, 200, 0.5)"></div>
-    <p>rgba( {{ 0 }}, {{ 0 }}, 200, 0.5 )</p>
+    <div
+      class="palette"
+      v-on:mousemove="changeColor"
+      v-on:click="pickColor"
+      v-bind:style="paletteStyle"
+    ></div>
+    <p>rgba( {{ red }}, {{ green }}, 200, 0.5 )</p>
     <div class="colors-container">
       <div
         class="mini-palette"
         v-for="(color, index) in colors"
         v-bind:key="index"
         v-bind:style="{
-          backgroundColor: `raba(${color.red},${cplor.red},200.0.5)`,
+          backgroundColor: `raba(${color.red}, ${color.green}, 200, 0.5)`,
         }"
-        v-om:click="ShowColor(Color)"
+        v-on:click="showColor(color)"
       ></div>
     </div>
   </div>
@@ -64,12 +69,12 @@ export default {
   align-items: center;
 }
 .palette {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
 }
 .mini-palette {
-  min-width: 60px;
-  height: 60px;
+  min-width: 80px;
+  height: 80px;
 }
 .colors-container {
   display: flex;
