@@ -1,5 +1,5 @@
 <template>
-  <h1>Vue パレット</h1>
+  <h1>Vue palette</h1>
   <div class="app">
     <div
       class="palette"
@@ -7,14 +7,27 @@
       v-on:click="pickColor"
       v-bind:style="paletteStyle"
     ></div>
-    <p>rgba( {{ red }}, {{ green }}, 200, 0.5 )</p>
+    <p>rgba( {{ yellow }}, {{ green }}, 200, 0.5 )</p>
+
+    <img
+      class="pallete-image"
+      src="https://www.dainippon-tosho.co.jp/star/special/sky/images/sky_02_3_sp.png"
+      alt="パレット背景"
+    />
+    <img
+      class="miniPalette-image"
+      src="https://s3-ap-northeast-1.amazonaws.com/sekaido-store-image-production/product_images/14142/product/sku_2042319929465_1.jpg?1507012576"
+      alt="パレット画像"
+    />
+
     <div class="colors-container">
+      <h2>[ミニパレット]</h2>
       <div
         class="mini-palette"
         v-for="(color, index) in colors"
         v-bind:key="index"
         v-bind:style="{
-          backgroundColor: `raba(${color.red}, ${color.green}, 200, 0.5)`,
+          backgroundColor: `raba(${color.yellow}, ${color.green}, 200, 0.5)`,
         }"
         v-on:click="showColor(color)"
       ></div>
@@ -26,35 +39,35 @@
 export default {
   data() {
     return {
-      red: 0,
-      blue: 0,
+      yellow: 200,
+      green: 200,
       colors: [],
     }
   },
   methods: {
     //マウスの位置に応じて色を変える
     changeColor(e) {
-      this.red = e.offsetX
+      this.yellow = e.offsetX
       this.green = e.offsetY
     },
     //色を選んでミニパレットに追加する
     pickColor() {
       const newColor = {
-        red: this.red,
+        yellow: this.yellow,
         green: this.green,
       }
       this.colors.push(newColor)
     },
     //パレットに指定した色を表示する
     showColor(color) {
-      this.red = color.red
+      this.yellow = color.yellow
       this.green = color.green
     },
   },
   computed: {
     paletteStyle() {
       return {
-        backgroundColor: `rgba(${this.red}, ${this.green}, 200, 0.5)`,
+        backgroundColor: `rgba(${this.yellow}, ${this.green}, 200, 0.5)`,
       }
     },
   },
@@ -62,6 +75,17 @@ export default {
 </script>
 
 <style>
+.h1 {
+  font-family: "fantacy";
+}
+.pallete-image {
+  position: absolute;
+  width: 110%;
+  height: 150%;
+  opacity: 0.5;
+  z-index: 1;
+}
+
 .app {
   display: flex;
   width: 100%;
@@ -69,17 +93,32 @@ export default {
   align-items: center;
 }
 .palette {
-  width: 400px;
+  position: center;
+  width: 500px;
   height: 400px;
+  z-index: 2;
 }
+.h2 {
+  font-family: "fantacy";
+}
+
 .mini-palette {
-  min-width: 80px;
-  height: 80px;
+  position: relative;
+  min-width: 50px;
+  height: 50px;
+  z-index: 4;
 }
 .colors-container {
-  display: flex;
-  flex-wrap: wrap;
+  position: relative;
+  top: auto;
   width: 300px;
   padding-top: 8px;
+}
+.miniPalette-image {
+  position: bottom;
+  width: 30%;
+  height: 10%;
+  z-index: 3;
+  opacity: 0.9;
 }
 </style>
