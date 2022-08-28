@@ -82,7 +82,7 @@ export default {
   position: absolute;
   width: 110%;
   height: 150%;
-  opacity: 0.4;
+  opacity: 0.5;
   z-index: 1;
 }
 
